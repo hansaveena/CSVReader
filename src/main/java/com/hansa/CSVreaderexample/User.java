@@ -3,12 +3,18 @@ package com.hansa.CSVreaderexample;
 import org.apache.camel.dataformat.bindy.annotation.CsvRecord;
 import org.apache.camel.dataformat.bindy.annotation.DataField;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+@JsonRootName(value = "user")
 @CsvRecord(separator = ",")
 public class User {
-	
-	@DataField(pos = 1,trim= true)
+
+	@JsonProperty
+	@DataField(pos = 1, trim = true)
 	private String name;
-	@DataField(pos = 2,trim= true)
+	@JsonProperty
+
+	@DataField(pos = 2, trim = true)
 	private String email;
 
 	public String getName() {
