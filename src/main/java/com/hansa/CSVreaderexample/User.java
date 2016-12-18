@@ -5,6 +5,7 @@ import org.apache.camel.dataformat.bindy.annotation.DataField;
 
 @CsvRecord(separator = ",")
 public class User {
+	
 	@DataField(pos = 1,trim= true)
 	private String name;
 	@DataField(pos = 2,trim= true)

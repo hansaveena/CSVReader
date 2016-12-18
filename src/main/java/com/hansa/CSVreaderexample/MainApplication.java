@@ -1,11 +1,15 @@
 package com.hansa.CSVreaderexample;
 
+import java.io.File;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.dataformat.BindyType;
+
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 public class MainApplication {
 
@@ -20,6 +24,8 @@ public class MainApplication {
 							public void process(Exchange exchange) throws Exception {
 								System.out.println(exchange);
 								User list = (User) exchange.getIn().getBody();
+								XmlMapper xmlMapper = new  XmlMapper();
+								xmlMapper.writeValue(new File("user.xml"), list);
 								System.out.println(list);
 							}
 						}).end();
